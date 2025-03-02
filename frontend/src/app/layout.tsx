@@ -5,7 +5,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: "unset" }}>{children}</body>
+      <body style={{ margin: "unset", backgroundColor: "black" }}>
+        {children}
+      </body>
     </html>
   );
 }

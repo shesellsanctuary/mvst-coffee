@@ -5,22 +5,9 @@ $lightGray: #909090;
 $darkGray: #383838;
 $veryDarkGray: #191919;
 
-.bgimg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 50%;
-}
-
 .home {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  height: 100vh;
   min-height: 100%;
   max-width: 100%;
   padding: 32px 24px;
@@ -30,14 +17,23 @@ $veryDarkGray: #191919;
 
   .overlay {
     width: 100%;
-    height: 100%;
+    height: 110%;
     position: absolute;
     top: 0px;
     left: 0px;
-    background: #000;
-    opacity: 0.65;
-    -moz-opacity: 0.65;
+    z-index: 2;
+    background: linear-gradient(rgba(0, 0, 0, 55%), black);
+  }
+  .background {
+    width: 100%;
+    height: 110%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     z-index: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .header {
@@ -46,6 +42,8 @@ $veryDarkGray: #191919;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    // position: sticky;
+    // top: 0px;
 
     .headerLogo {
       max-width: 160px;
@@ -67,15 +65,17 @@ $veryDarkGray: #191919;
     justify-content: space-between;
     flex-direction: column;
     padding-inline: 78px;
+    gap: 24px;
+    margin: 56px 0 56px 0;
   }
 
-  .footer {
+  .contentFooter {
     justify-self: flex-end;
     flex-grow: 1;
     text-align: center;
     color: wheat;
-    justify-content: center;
     align-content: center;
+    margin-top: 32px;
   }
 
   .homeTitle {
@@ -115,31 +115,39 @@ $veryDarkGray: #191919;
     text-align: center;
     color: white;
   }
-}
 
-.card {
-  .cardTitle {
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 24px;
+  .homeFilter {
+    font-weight: 400;
+    font-size: 16px;
     line-height: 20px;
     letter-spacing: 0%;
     text-align: center;
+    background-color: $darkGray;
+    border-radius: 33px;
+    color: white;
+    padding: 14px 16px;
+    margin-bottom: 24px;
   }
-  .cardDescription {
-    font-family: Poppins;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: 0%;
-    text-align: center;
+
+  .cardGrid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
   }
-  .cardPrice {
-    font-family: Poppins;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    letter-spacing: 0%;
-    text-align: center;
+
+  .footer {
+    height: 270px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+
+    .footerImg {
+      position: relative;
+      z-index: -1;
+      width: 270px;
+      height: 40px;
+    }
   }
 }

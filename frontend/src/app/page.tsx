@@ -1,7 +1,7 @@
 import { Card } from "@/components/Card";
 import { AxiosInstance } from "@/services/coffeeService";
 import layout from "../styles/layout.module.scss";
-import { poppins, bebas, mvstCoffeeLogo } from "@/styles";
+import { poppins, bebas, mvstCoffeeLogo, coffeeBeansImg } from "@/styles";
 import { topViewCoffeeImg } from "@/styles";
 import Image from "next/image";
 export default async function Home() {
@@ -10,22 +10,23 @@ export default async function Home() {
   if (!coffees) return <div>Loading...</div>;
 
   return (
-    <main
-      className={layout.home}
-      style={{ backgroundImage: `url(${topViewCoffeeImg.src})` }}
-    >
+    <main className={layout.home}>
       <div className={layout.overlay}></div>
+      <div
+        className={layout.background}
+        style={{ backgroundImage: `url(${topViewCoffeeImg.src})` }}
+      ></div>
+      <div className={layout.header}>
+        <Image
+          src={mvstCoffeeLogo}
+          alt="mvst coffee logo"
+          className={layout.headerLogo}
+        />
+        <button className={`${layout.button} ${poppins.className}`}>
+          Create
+        </button>
+      </div>
       <div className={layout.container}>
-        <div className={layout.header}>
-          <Image
-            src={mvstCoffeeLogo}
-            alt="mvst coffee logo"
-            className={layout.headerLogo}
-          />
-          <button className={`${layout.button} ${poppins.className}`}>
-            Create
-          </button>
-        </div>
         <div className={layout.content}>
           <span className={`${layout.homeTitle} ${bebas.className}`}>
             Roasted Coffee
@@ -37,15 +38,36 @@ export default async function Home() {
             Create your own coffee
           </button>
         </div>
-        <div className={layout.footer}>
+        <div className={layout.contentFooter}>
           <span className={`${layout.homeFooter} ${bebas.className}`}>
             mvst exclusive coffee
           </span>
         </div>
-        {/* <h1 className="text-3xl mb-10">You&apos;ve got this! 🚀</h1>
-      {coffees.map(({ id, name, description }) => (
-        <Card key={id} title={name} description={description} />
-      ))} */}
+        <div className={`${layout.homeFilter} ${poppins.className}`}>
+          FILTER
+        </div>
+        <div className={layout.cardGrid}>
+          {coffees.map(({ id, name, description, type, image, price }) => (
+            <Card
+              key={id}
+              title={name}
+              description={description}
+              type={type}
+              price={price}
+              imgSrc={image}
+            />
+          ))}
+        </div>
+      </div>
+      <div
+        className={layout.footer}
+        style={{ backgroundImage: `url(${coffeeBeansImg.src})` }}
+      >
+        <Image
+          src={mvstCoffeeLogo}
+          alt="mvst coffee logo"
+          className={layout.footerImg}
+        />
       </div>
     </main>
   );
