@@ -11,7 +11,7 @@ export class Coffee {
   @Column({ type: 'varchar', length: 50 })
   name: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'float' })
   price: number;
 
   @Column({ type: 'varchar', length: 255 })

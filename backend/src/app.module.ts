@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoffeeModule } from './coffee/coffee.module';
 import { Coffee } from './coffee/entities/coffee.entity';
@@ -19,6 +18,6 @@ import { Coffee } from './coffee/entities/coffee.entity';
     }),
     CoffeeModule,
   ],
-  controllers: [AppController],
+  controllers: [],
 })
 export class AppModule {}

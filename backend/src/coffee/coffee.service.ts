@@ -28,6 +28,11 @@ export class CoffeeService {
   getCoffeeById(id: number): Promise<Coffee> {
     return this.coffeeRepository.findOneBy({ id });
   }
+
+  getCoffeeByName(name: string): Promise<Coffee> {
+    return this.coffeeRepository.findOneBy({ name });
+  }
+
   updateCoffee(id: number, updateCoffeeDto: UpdateCoffeeDto): Promise<Coffee> {
     const coffee: Coffee = new Coffee();
     coffee.name = updateCoffeeDto.name;

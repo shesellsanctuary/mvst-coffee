@@ -1,9 +1,10 @@
 import {
   IsEnum,
-  IsInt,
   IsNotEmpty,
   IsString,
   MinLength,
+  IsUrl,
+  IsNumber,
 } from 'class-validator';
 
 export class CreateCoffeeDto {
@@ -13,11 +14,17 @@ export class CreateCoffeeDto {
   name: string;
 
   @IsNotEmpty()
+  @IsUrl()
   image: string;
 
+  @IsString()
+  @MinLength(2, {
+    message: 'Coffee description must have atleast 2 characters.',
+  })
+  @IsNotEmpty()
   description: string;
 
-  @IsInt()
+  @IsNumber()
   price: number;
 
   @IsString()
