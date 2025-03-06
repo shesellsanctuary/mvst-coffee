@@ -1,36 +1,98 @@
+"use client";
+import { createCoffee } from "@/services/coffeeService";
 import { colors, dm_sans, formStyle } from "@/styles";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import toast from "react-hot-toast";
 
-export const NewCoffeeForm = () => {
+const initialState = {
+  errors: null,
+  message: null,
+};
+
+type messageType = "success" | "error";
+
+export type FormState = {
+  errors: {
+    name?: string;
+    type?: string;
+    price?: string;
+    description?: string;
+    image?: string;
+  };
+  message?: string;
+  type: messageType;
+};
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
   return (
-    <form action="" className={`${dm_sans.className} ${formStyle.form}`}>
+    <button className={formStyle.confirmBtn} type="submit" disabled={pending}>
+      Confirm
+    </button>
+  );
+};
+export const NewCoffeeForm = () => {
+  const [formState, formAction] = useFormState<FormState>(
+    createCoffee,
+    initialState
+  );
+  console.log(`${JSON.stringify(formState)}`);
+  useEffect(() => {
+    if (formState.message) {
+      formState.type === "error"
+        ? toast.error(formState.message)
+        : toast.success(formState.message);
+    }
+  }, [formState.message, formState.type]);
+
+  return (
+    <form
+      action={formAction}
+      className={`${dm_sans.className} ${formStyle.form}`}
+    >
       <div
+        className={formStyle.formInput}
         style={{
-          display: "flex",
-          flexDirection: "column",
           gridRow: "span 1",
           gridColumn: "span 3",
         }}
       >
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" placeholder="Name your coffee here" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Name your coffee here"
+        />
+        <span className={formStyle.errorFeedback}>
+          {formState.errors?.name}
+        </span>
       </div>
       <div
+        className={formStyle.formInput}
         style={{
-          display: "flex",
-          flexDirection: "column",
           gridRow: "span 1",
           gridColumn: "span 1",
         }}
       >
         <label htmlFor="price">Price</label>
-        <input type="number" id="price" placeholder="0.00" />
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="0.00"
+          step="0.01"
+        />
         <span className={formStyle.priceInput}>€</span>
+        <span className={formStyle.errorFeedback}>
+          {formState.errors?.price}
+        </span>
       </div>
       <div
+        className={formStyle.formInput}
         style={{
-          display: "flex",
-          flexDirection: "column",
           gridRow: "span 1",
           gridColumn: "span 4",
         }}
@@ -43,31 +105,40 @@ export const NewCoffeeForm = () => {
             gap: "16px",
           }}
         >
-          <input type="radio" id="a25" name="amount" />
-          <label htmlFor="a25" style={{ borderColor: colors.borderColor }}>
+          <input type="radio" id="arabic" name="type" value="arabic" />
+          <label htmlFor="arabic">
             <span>Arabic</span>
           </label>
-          <input type="radio" id="a24" name="amount" />
-          <label htmlFor="a24" style={{ borderColor: colors.borderColor }}>
+          <input type="radio" id="robusta" name="type" value="robusta" />
+          <label htmlFor="robusta">
             <span>Robusta</span>
           </label>
         </div>
+        <span className={formStyle.errorFeedback}>
+          {formState.errors?.type}
+        </span>
       </div>
       <div
+        className={formStyle.formInput}
         style={{
-          display: "flex",
-          flexDirection: "column",
           gridRow: "span 1",
           gridColumn: "span 4",
         }}
       >
         <label htmlFor="image">Upload Image</label>
-        <input type="text" id="image" placeholder="Paste image URL here" />
+        <input
+          type="text"
+          id="image"
+          name="image"
+          placeholder="Paste image URL here"
+        />
+        <span className={formStyle.errorFeedback}>
+          {formState.errors?.image}
+        </span>
       </div>
       <div
+        className={formStyle.formInput}
         style={{
-          display: "flex",
-          flexDirection: "column",
           gridRow: "span 1",
           gridColumn: "span 4",
         }}
@@ -76,8 +147,12 @@ export const NewCoffeeForm = () => {
         <input
           type="text"
           id="description"
+          name="description"
           placeholder="Add a description"
         ></input>
+        <span className={formStyle.errorFeedback}>
+          {formState.errors?.description}
+        </span>
       </div>
       <div className={formStyle.formBtns}>
         <Link href="/">
@@ -85,9 +160,7 @@ export const NewCoffeeForm = () => {
             Discard
           </button>
         </Link>
-        <button className={formStyle.confirmBtn} type="submit">
-          Confirm
-        </button>
+        <SubmitButton />
       </div>
     </form>
   );

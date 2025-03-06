@@ -1,3 +1,5 @@
+import { ToastProvider } from "@/components";
+
 export default function RootLayout({
   children,
 }: {
@@ -6,7 +8,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ margin: "unset", backgroundColor: "black" }}>
-        {children}
+        <ToastProvider>{children}</ToastProvider>
       </body>
     </html>
   );

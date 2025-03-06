@@ -39,12 +39,21 @@
     font-weight: 400;
     text-align: center;
   }
+
+  .modalFooter {
+    display: none;
+  }
 }
 
 @media (min-width: 900px) {
   .mvstModal {
     width: 50%;
-    height: 100%;
+    top: unset;
+    height: unset;
     padding-inline: 80px;
+
+    .modalFooter {
+      display: block;
+    }
   }
 }
