@@ -1,12 +1,7 @@
-$bronze: #ba8039;
-$lightTurquise: #77a9b0;
-$lightBronze: #d3ad7f;
-$lightGray: #909090;
-$darkGray: #383838;
-$veryDarkGray: #191919;
+@use "../colors" as *;
 
 .card {
-  background-color: $veryDarkGray;
+  background-color: $cardBackground;
   border-radius: 6px;
   padding: 16px;
   display: flex;
@@ -20,9 +15,11 @@ $veryDarkGray: #191919;
     width: fit-content;
     text-transform: capitalize;
   }
+
   .cardImg {
     width: 250px;
     height: 200px;
+    align-self: center;
   }
 
   .cardTitle {
@@ -31,7 +28,7 @@ $veryDarkGray: #191919;
     line-height: 20px;
     letter-spacing: 0%;
     text-align: center;
-    color: $lightBronze;
+    color: $secondary;
   }
   .cardDescription {
     font-weight: 500;
@@ -39,7 +36,7 @@ $veryDarkGray: #191919;
     line-height: 26px;
     letter-spacing: 0%;
     text-align: center;
-    color: $lightGray;
+    color: $darkText;
   }
   .cardPrice {
     font-weight: 700;

@@ -1,12 +1,17 @@
-import { Card } from "@/components/Card";
+import { Card, Modal, NewCoffeeForm } from "@/components";
 import { AxiosInstance } from "@/services/coffeeService";
-import layout from "../styles/layout.module.scss";
 import { poppins, bebas, mvstCoffeeLogo, coffeeBeansImg } from "@/styles";
-import { topViewCoffeeImg } from "@/styles";
+import { topViewCoffeeImg, layout } from "@/styles";
 import Image from "next/image";
-export default async function Home() {
-  const coffees = (await AxiosInstance.get("/coffee", {})).data;
+import Link from "next/link";
 
+type SearchParamProps = {
+  searchParams: Record<string, string> | null | undefined;
+};
+
+export default async function Home({ searchParams }: SearchParamProps) {
+  const coffees = (await AxiosInstance.get("/coffee")).data;
+  const show = searchParams?.show;
   if (!coffees) return <div>Loading...</div>;
 
   return (
@@ -22,9 +27,11 @@ export default async function Home() {
           alt="mvst coffee logo"
           className={layout.headerLogo}
         />
-        <button className={`${layout.button} ${poppins.className}`}>
-          Create
-        </button>
+        <Link href={"/?show=true"}>
+          <button className={`${layout.button} ${poppins.className}`}>
+            Create
+          </button>
+        </Link>
       </div>
       <div className={layout.container}>
         <div className={layout.content}>
@@ -34,9 +41,11 @@ export default async function Home() {
           <span className={`${layout.homeSubtitle} ${poppins.className}`}>
             Choose a coffee from below or create your own{" "}
           </span>
-          <button className={`${layout.button} ${poppins.className}`}>
-            Create your own coffee
-          </button>
+          <Link href={"/?show=true"}>
+            <button className={`${layout.button} ${poppins.className}`}>
+              Create your own coffee
+            </button>
+          </Link>
         </div>
         <div className={layout.contentFooter}>
           <span className={`${layout.homeFooter} ${bebas.className}`}>
@@ -69,6 +78,7 @@ export default async function Home() {
           className={layout.footerImg}
         />
       </div>
+      {show && <Modal title="Create New" Content={NewCoffeeForm} />}
     </main>
   );
 }

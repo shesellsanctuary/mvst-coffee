@@ -1,17 +1,13 @@
-$bronze: #BA8039;
-$lightTurquise: #77A9B0;
-$lightBronze: #D3AD7F;
-$lightGray: #909090;
-$darkGray: #383838;
-$veryDarkGray: #191919;
+@use "./colors" as *;
 
 :export {
-    primary: $bronze;
-    secondary: $lightBronze;
-    background: black;
-    cardBackground: $veryDarkGray;
-    lightText: white;
-    darkText: $lightGray;
-    lightTurquise: $lightTurquise;
-    darkGray: $darkGray;
-  }
+  primary: $bronze;
+  secondary: $lightBronze;
+  background: $background;
+  cardBackground: $veryDarkGray;
+  lightText: white;
+  darkText: $lightGray;
+  lightTurquise: $lightTurquise;
+  darkGray: $darkGray;
+  borderColor: $borderGray;
+}

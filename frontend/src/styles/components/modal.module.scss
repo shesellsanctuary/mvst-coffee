@@ -1,0 +1,50 @@
+@use "../colors" as *;
+
+.mvstModal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: -webkit-fill-available;
+  z-index: 1000;
+  justify-items: center;
+  justify-self: anchor-center;
+  padding-inline: 16px;
+  padding-top: 24px;
+
+  .modalHeader {
+    display: flex;
+    padding-inline: 16px;
+    a {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      &:active {
+        color: $darkGray;
+      }
+    }
+    justify-self: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .modalContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 16px;
+  }
+
+  .modalTitle {
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+  }
+}
+
+@media (min-width: 900px) {
+  .mvstModal {
+    width: 50%;
+    height: 100%;
+    padding-inline: 80px;
+  }
+}

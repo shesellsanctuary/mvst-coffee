@@ -1,8 +1,6 @@
 import React from "react";
-import card from "../styles/card.module.scss";
-import colors from "../styles/colors.module.scss";
 import Image from "next/image";
-import { poppins } from "@/styles";
+import { poppins, cardStyle, colors } from "@/styles";
 
 type Props = {
   title: string;
@@ -14,9 +12,9 @@ type Props = {
 
 export const Card = ({ title, description, type, imgSrc, price }: Props) => {
   return (
-    <div className={card.card}>
+    <div className={cardStyle.card}>
       <span
-        className={`${card.cardType} ${poppins.className}`}
+        className={`${cardStyle.cardType} ${poppins.className}`}
         style={{
           backgroundColor:
             type === "arabic" ? colors.lightTurquise : colors.darkGray,
@@ -24,20 +22,20 @@ export const Card = ({ title, description, type, imgSrc, price }: Props) => {
       >
         {type}
       </span>
-      {/* <Image
+      <Image
         src={imgSrc}
         alt="coffee image"
-        className={card.cardImg}
+        className={cardStyle.cardImg}
         width={250}
         height={200}
-      /> */}
-      <p className={`${card.cardTitle} ${poppins.className}`}>{title}</p>
-      <p className={`${card.cardDescription} ${poppins.className}`}>
+      />
+      <p className={`${cardStyle.cardTitle} ${poppins.className}`}>{title}</p>
+      <p className={`${cardStyle.cardDescription} ${poppins.className}`}>
         {description}
       </p>
-      <p className={`${card.cardPrice} ${poppins.className}`}>{`${price.toFixed(
-        2
-      )} €`}</p>
+      <p
+        className={`${cardStyle.cardPrice} ${poppins.className}`}
+      >{`${price.toFixed(2)} €`}</p>
     </div>
   );
 };
