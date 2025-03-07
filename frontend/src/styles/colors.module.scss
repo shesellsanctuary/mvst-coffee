@@ -1,0 +1,14 @@
+@use "./colors" as *;
+
+:export {
+  primary: $bronze;
+  secondary: $lightBronze;
+  background: $background;
+  cardBackground: $veryDarkGray;
+  lightText: white;
+  darkText: $lightGray;
+  lightTurquise: $lightTurquise;
+  darkGray: $darkGray;
+  borderColor: $borderGray;
+  error: $error;
+}

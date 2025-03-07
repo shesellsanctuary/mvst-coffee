@@ -1,0 +1,141 @@
+@use "../colors" as *;
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+
+  .formInput {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .typeInput {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  label {
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    background-color: $darkGray !important;
+    border-radius: 8px;
+    border: 1px;
+    padding: 12px 8px;
+    font-size: 14px;
+    color: white !important;
+
+    &:focus,
+    &:focus-visible {
+      outline-color: $primary;
+      border-color: $primary;
+    }
+  }
+  input[type="number"] {
+    padding-right: 24px;
+  }
+  .priceInput {
+    position: fixed;
+    color: white;
+    top: 197px;
+    right: 25px;
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    & + label {
+      cursor: pointer;
+      border-radius: 8px;
+      border: 1px solid;
+      text-align: center;
+      border-color: $borderColor;
+
+      span {
+        display: flex;
+        max-width: 100%;
+        border-radius: 8px;
+        justify-content: center;
+        background-color: $cardBackground;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+    }
+
+    &:checked + label {
+      border-color: white !important;
+      color: white;
+    }
+
+    &:disabled + label span {
+      opacity: 50%;
+    }
+  }
+
+  .formBtns {
+    display: grid;
+    grid-column: span 4;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 12px;
+    a {
+      grid-column: span 4;
+    }
+    button {
+      width: 100%;
+      grid-column: span 4;
+      border: 1px solid;
+      border-radius: 54px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .discardBtn {
+      color: $lightText;
+      border-color: $primary;
+      background-color: $background;
+    }
+
+    .confirmBtn {
+      color: $lightText;
+      background-color: $primary;
+      border-color: $primary;
+
+      &:disabled {
+        opacity: 50%;
+      }
+    }
+  }
+
+  .errorFeedback {
+    font-size: 12px;
+    color: $error;
+    padding-left: 8px;
+    padding-top: 4px;
+  }
+}
+
+@media (min-width: 650px) {
+  .form {
+    .formBtns {
+      a {
+        grid-column: 2;
+      }
+      button {
+        grid-column: 3;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .form {
+    .priceInput {
+      display: none;
+    }
+  }
+}

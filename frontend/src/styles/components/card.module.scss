@@ -1,0 +1,49 @@
+@use "../colors" as *;
+
+.card {
+  background-color: $cardBackground;
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+
+  .cardType {
+    border-radius: 41px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: white;
+    width: fit-content;
+    text-transform: capitalize;
+  }
+
+  .cardImg {
+    width: 250px;
+    height: 200px;
+    align-self: center;
+  }
+
+  .cardTitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $secondary;
+  }
+  .cardDescription {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: $darkText;
+  }
+  .cardPrice {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: white;
+  }
+}
