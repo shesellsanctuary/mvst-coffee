@@ -2,21 +2,28 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoffeeModule } from './coffee/coffee.module';
 import { Coffee } from './coffee/entities/coffee.entity';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      password: 'Mast3rp@ss',
-      username: 'postgres',
-      entities: [Coffee],
-      database: 'postgres',
-      synchronize: true,
-      logging: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
     }),
-    CoffeeModule,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule, CoffeeModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DATABASE_URL'),
+        port: 5432,
+        username: configService.get('DATABASE_USERNAME'),
+        password: configService.get('DATABASE_PASSWORD'),
+        entities: [Coffee],
+        database: configService.get('DATABASE_NAME'),
+        synchronize: true,
+        logging: true,
+      }),
+      inject: [ConfigService],
+    }),
   ],
   controllers: [],
 })

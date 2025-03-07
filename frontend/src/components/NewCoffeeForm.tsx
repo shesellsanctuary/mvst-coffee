@@ -7,9 +7,10 @@ import { useFormState, useFormStatus } from "react-dom";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-const initialState = {
-  errors: null,
-  message: null,
+const initialState: FormState = {
+  errors: {},
+  message: "",
+  type: "success",
 };
 
 type messageType = "success" | "error";
@@ -35,8 +36,8 @@ const SubmitButton = () => {
   );
 };
 export const NewCoffeeForm = () => {
-  const [formState, formAction] = useFormState<FormState>(
-    createCoffee,
+  const [formState, formAction] = useFormState<FormState, FormData>(
+    (state, formData) => createCoffee(state, formData),
     initialState
   );
   const router = useRouter();
@@ -46,10 +47,11 @@ export const NewCoffeeForm = () => {
       if (formState.type === "success") {
         toast.success(formState.message);
         router.push("/");
+      } else {
+        toast.error(formState.message);
       }
-      toast.error(formState.message);
     }
-  }, [formState.message, formState.type]);
+  }, [formState.message, formState.type, router]);
 
   return (
     <form
