@@ -1,6 +1,14 @@
+# Foreword
+
+This project was so much fun to do. It was my first time using Nest.js and Next.js and I could really get into both of them and understand their advantages for fullstack development. CSS stopped being a tabu for me a long time ago, so I enjoyed using Sass to modulize and structure the styling.
+
+For deployment, I used railway and had to copy the project to my GitHub in order to deploy the project due to the project size. You can access the project here https://frontend-production-ed84.up.railway.app/.
+
+Looking forward to your feedback!
+
 # MVST Challenge
 
-We're thrilled that you've made it to our MVST coding challenge! We are rooting for your success and hope to meet you in the challenge review! 🚀 If you have anything that we can help you with, just open an issue in the Github repo that was provided to you. 
+We're thrilled that you've made it to our MVST coding challenge! We are rooting for your success and hope to meet you in the challenge review! 🚀 If you have anything that we can help you with, just open an issue in the Github repo that was provided to you.
 
 ## How to get started
 
@@ -61,7 +69,7 @@ Before adding a new Coffee, you should validate if an existing record with the s
 7. Match the design in the Figma file.
 8. If you don't feel comfortable using the `app` folder introduced in Next.js 13, you are allowed to use the `page` folder.
 
-### 🔍 What we will check 
+### 🔍 What we will check
 
 To be transparent, these are some things we consider important in the challenge:
 
@@ -94,7 +102,7 @@ So you are finished and feel like showing us some more? Here are a few things th
 - The starter code won't start
 
   Check that you are using the correct node versions. We have provided an `.nvmrc` file so you can set it to Node 18 if you are using `nvm`. Also, make sure that you have docker installed if you want to use the DB starter script provided by us.
-  
+
 - Some project dependencies are out of date. Can I update them?
 
   Absolutely! Also ping us and let us know about this.
@@ -105,11 +113,11 @@ So you are finished and feel like showing us some more? Here are a few things th
 
 ### What would you improve if given more time?
 
-Please fill
+I would love to add a file picker for the images, it was my idea at first, but I did not come to it in the end. Also, the compatibility with the safari browser.
 
 ### How was your experience doing this challenge?
 
-Please fill
+As mentioned in the foreword, it was much fun to implement this challenge. I am always happy to see a project come to life and doing it while learning both Next and Nest brought me even more the feeling of acomplishment.
 
 ---
 
