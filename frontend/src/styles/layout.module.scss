@@ -1,9 +1,4 @@
-$bronze: #ba8039;
-$lightTurquise: #77a9b0;
-$lightBronze: #d3ad7f;
-$lightGray: #909090;
-$darkGray: #383838;
-$veryDarkGray: #191919;
+@use "./colors" as *;
 
 .home {
   display: flex;
@@ -73,7 +68,7 @@ $veryDarkGray: #191919;
     justify-self: flex-end;
     flex-grow: 1;
     text-align: center;
-    color: wheat;
+    color: $lightText;
     align-content: center;
     margin-top: 32px;
   }
@@ -85,7 +80,7 @@ $veryDarkGray: #191919;
     letter-spacing: 0%;
     text-align: center;
     text-wrap: auto;
-    color: white;
+    color: $lightText;
   }
 
   .homeSubtitle {
@@ -99,8 +94,9 @@ $veryDarkGray: #191919;
 
   .button {
     border-radius: 34px;
-    color: white;
-    background-color: #ba8039;
+    border: unset;
+    color: $lightText;
+    background-color: $primary;
     font-weight: 500;
     font-size: 14px;
     padding: 14px 16px;
@@ -114,7 +110,7 @@ $veryDarkGray: #191919;
     line-height: 50px;
     letter-spacing: 0%;
     text-align: center;
-    color: white;
+    color: $lightText;
   }
 
   .homeFilter {
@@ -125,16 +121,9 @@ $veryDarkGray: #191919;
     text-align: center;
     background-color: $darkGray;
     border-radius: 33px;
-    color: white;
+    color: $lightText;
     padding: 14px 16px;
     margin-bottom: 24px;
-  }
-
-  .cardGrid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
-    justify-content: center;
   }
 
   .footer {
@@ -144,6 +133,7 @@ $veryDarkGray: #191919;
     align-items: center;
     justify-content: center;
     background-size: contain;
+    z-index: 2;
 
     .footerImg {
       position: relative;

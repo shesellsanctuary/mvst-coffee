@@ -9,6 +9,7 @@ import layout from "./layout.module.scss";
 import cardStyle from "./components/card.module.scss";
 import modalStyle from "./components/modal.module.scss";
 import formStyle from "./components/form.module.scss";
+import coffeeListStyle from "./components/coffeeList.module.scss";
 
 export {
   poppins,
@@ -24,4 +25,5 @@ export {
   modalStyle,
   colors,
   formStyle,
+  coffeeListStyle,
 };

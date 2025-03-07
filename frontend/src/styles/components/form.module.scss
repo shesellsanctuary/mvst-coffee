@@ -11,6 +11,12 @@
     flex-direction: column;
   }
 
+  .typeInput {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
   label {
     margin-bottom: 8px;
   }
@@ -36,7 +42,7 @@
   .priceInput {
     position: fixed;
     color: white;
-    top: 165px;
+    top: 197px;
     right: 25px;
   }
 
@@ -63,6 +69,7 @@
 
     &:checked + label {
       border-color: white !important;
+      color: white;
     }
 
     &:disabled + label span {
@@ -128,7 +135,7 @@
 @media (min-width: 900px) {
   .form {
     .priceInput {
-      right: 234px;
+      display: none;
     }
   }
 }

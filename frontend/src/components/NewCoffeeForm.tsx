@@ -1,10 +1,11 @@
 "use client";
 import { createCoffee } from "@/services/coffeeService";
-import { colors, dm_sans, formStyle } from "@/styles";
+import { dm_sans, formStyle } from "@/styles";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const initialState = {
   errors: null,
@@ -38,12 +39,15 @@ export const NewCoffeeForm = () => {
     createCoffee,
     initialState
   );
-  console.log(`${JSON.stringify(formState)}`);
+  const router = useRouter();
+
   useEffect(() => {
     if (formState.message) {
-      formState.type === "error"
-        ? toast.error(formState.message)
-        : toast.success(formState.message);
+      if (formState.type === "success") {
+        toast.success(formState.message);
+        router.push("/");
+      }
+      toast.error(formState.message);
     }
   }, [formState.message, formState.type]);
 
@@ -98,13 +102,7 @@ export const NewCoffeeForm = () => {
         }}
       >
         <label htmlFor="type">Type</label>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2,1fr)",
-            gap: "16px",
-          }}
-        >
+        <div className={formStyle.typeInput}>
           <input type="radio" id="arabic" name="type" value="arabic" />
           <label htmlFor="arabic">
             <span>Arabic</span>

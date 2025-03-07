@@ -4,7 +4,7 @@ export type Coffee = {
   price: number;
   type: CoffeeType;
   description: string;
-  imageUrl: string;
+  image: string;
 };
 
 export type CoffeeType = "arabic" | "robusta";

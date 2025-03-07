@@ -53,7 +53,8 @@ export async function createCoffee(formState: FormState, formData: FormData) {
     await AxiosInstance.post("/coffee", {
       ...validatedCoffeeFormData.data,
     });
-    revalidatePath("/");
+    revalidatePath("/?show=false");
+
     return {
       message: "Coffee created!",
       type: "success",

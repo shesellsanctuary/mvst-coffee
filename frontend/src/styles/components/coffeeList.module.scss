@@ -1,0 +1,36 @@
+@use "../colors" as *;
+
+.cardGrid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+  justify-content: center;
+}
+
+.homeFilter {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  background-color: $darkGray;
+  color: white;
+  border-radius: 33px;
+  margin-bottom: 50px;
+  margin-top: 16px;
+  max-width: 550px;
+  width: 100%;
+
+  .filterTab {
+    background-color: $darkGray;
+    text-transform: capitalize;
+    border: unset;
+    color: white;
+    width: 100%;
+    padding: 12px 0px;
+    border-radius: 33px;
+
+    &.active {
+      background-color: white;
+      color: $veryDarkGray;
+    }
+  }
+}

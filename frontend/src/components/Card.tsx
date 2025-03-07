@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { poppins, cardStyle, colors } from "@/styles";
-import { Coffee } from "@/types/Coffee";
 
 type Props = {
   name: string;
@@ -10,6 +9,7 @@ type Props = {
   price: number;
   type: string;
 };
+
 export const Card = ({ name, description, type, imageUrl, price }: Props) => {
   return (
     <div className={cardStyle.card}>
@@ -24,7 +24,7 @@ export const Card = ({ name, description, type, imageUrl, price }: Props) => {
       </span>
       <Image
         src={imageUrl}
-        alt="coffee image"
+        alt="card image"
         className={cardStyle.cardImg}
         width={250}
         height={200}

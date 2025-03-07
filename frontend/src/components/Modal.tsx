@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { bebas, colors, dm_sans, modalStyle } from "@/styles";
+import { bebas, coffeeBeansImg, colors, dm_sans, modalStyle } from "@/styles";
+import Image from "next/image";
 
 type ModalProps = {
   title: string;
@@ -12,8 +13,9 @@ export const Modal = ({ title, Content }: ModalProps) => {
       className={modalStyle.mvstModal}
       style={{ backgroundColor: colors.cardBackground, color: colors.darkText }}
     >
+      <div className={modalStyle.overlay}></div>
       <div className={`${dm_sans.className} ${modalStyle.modalHeader} `}>
-        <Link style={{ color: colors.lightText }} href="/">
+        <Link style={{ color: colors.lightText, padding: "0px 32px" }} href="/">
           X
         </Link>
       </div>
@@ -25,6 +27,13 @@ export const Modal = ({ title, Content }: ModalProps) => {
           {title}
         </span>
         <Content />
+      </div>
+      <div className={modalStyle.modalFooter}>
+        <Image
+          src={coffeeBeansImg}
+          className={modalStyle.image}
+          alt="coffee beans"
+        />
       </div>
     </div>
   );

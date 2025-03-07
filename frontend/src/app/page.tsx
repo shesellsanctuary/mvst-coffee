@@ -1,4 +1,5 @@
 import { Card, Modal, NewCoffeeForm } from "@/components";
+import { CoffeeList } from "@/components/CoffeeList";
 import { AxiosInstance } from "@/services/coffeeService";
 import { poppins, bebas, mvstCoffeeLogo, coffeeBeansImg } from "@/styles";
 import { topViewCoffeeImg, layout } from "@/styles";
@@ -12,6 +13,7 @@ type SearchParamProps = {
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const coffees = (await AxiosInstance.get("/coffee")).data as Coffee[];
+
   const show = searchParams?.show;
   if (!coffees) return <div>Loading...</div>;
 
@@ -53,21 +55,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
             mvst exclusive coffee
           </span>
         </div>
-        <div className={`${layout.homeFilter} ${poppins.className}`}>
-          FILTER
-        </div>
-        <div className={layout.cardGrid}>
-          {coffees.map(({ id, name, description, type, imageUrl, price }) => (
-            <Card
-              key={id}
-              name={name}
-              description={description}
-              type={type}
-              price={price}
-              imageUrl={imageUrl}
-            />
-          ))}
-        </div>
+        <CoffeeList coffees={coffees} />
       </div>
       <div
         className={layout.footer}
