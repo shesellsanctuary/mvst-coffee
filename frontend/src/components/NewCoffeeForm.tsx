@@ -46,8 +46,9 @@ export const NewCoffeeForm = () => {
       if (formState.type === "success") {
         toast.success(formState.message);
         router.push("/");
+      } else {
+        toast.error(formState.message);
       }
-      toast.error(formState.message);
     }
   }, [formState.message, formState.type]);
 
